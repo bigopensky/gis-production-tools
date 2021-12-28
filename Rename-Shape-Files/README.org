@@ -19,7 +19,7 @@ The current [[https://en.wikipedia.org/wiki/Shapefile][list of extensions]] in a
   identifying the character encoding to be used
   ~{content-type: text/plain OR x-gis/x-shapefile }
 
-- ~dbf~^* -- attribute format; columnar attributes for each shape, in
+- ~dbf~ ^* -- attribute format; columnar attributes for each shape, in
    dBase IV format ~{content-type: application/octet-stream OR  text/plain}~
 
 - ~fbn~ and ~fbx~ --  a spatial index of the features that are read-only
@@ -38,10 +38,10 @@ The current [[https://en.wikipedia.org/wiki/Shapefile][list of extensions]] in a
 - ~sbn~ and ~sbx~ -- a spatial index of the features
            ~ {content-type: x-gis/x-shapefile}~
 
-- ~shp~^* -- shape format; the feature geometry itself 
+- ~shp~ ^* -- shape format; the feature geometry itself 
            ~{content-type: x-gis/x-shapefile}~
 
-- ~shx~^* -- shape index format; a positional index of the feature
+- ~shx~ ^* -- shape index format; a positional index of the feature
   geometry to allow seeking forwards and backwards quickly
   ~{content-type: x-gis/x-shapefile}~
 
