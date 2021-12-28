@@ -1,0 +1,9 @@
+* Rename ESRI-Shapefiles®
+
+The tool ~shpmv~ is a Rerl script to rename an ensemble of ESRI-Shapefiles(R). 
+
+The original set of files for a spatial layer comes often
+with so called sidecar files produced by third party application. The
+tool keeps track of this files during the rename process and renames them too.
+
+

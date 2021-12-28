@@ -1,0 +1,110 @@
+#!/usr/bin/env perl
+# ------------------------------------------------------------
+# shpmv -- Tool to rename ESRI Shape files
+# ------------------------------------------------------------
+# Copyright (C) 2016 Alexander Weidauer
+# Contact: alex.weidauer@huckfinn.de
+#
+# This program is free software and released under the
+# BSD License 2.0. You can recieve a copy of the license
+# under: https://opensource.org/licenses/BSD-3-Clause
+# ------------------------------------------------------------
+use strict;
+use File::Copy qw(move);
+use File::Basename;
+use File::Spec;
+
+# Read command line parameter $1 $2 and $3
+my $src  = shift; # Source location
+my $dst  = shift; # Destination
+my $case = shift; # Extention handling upper or lower case
+
+# Parameter handling and help function
+if ( ($src eq '-h') or ($src eq '--help') ) {
+    print "Move ESRI Shape files\n\n";
+    print "Usage:     $0 source-file destination [-l|-u]\n";
+    print "Parameter:\n";
+    print "  source-file -- Shapefile for the ensemble to move from.\n";
+    print "  destination -- Shapefile destination without extension to move to.\n\n";
+    print "Optional:\n";
+    print "  -l extention lower case\n";
+    print "  -u extention upper case\n\n";
+    print "Example:   $0 ~/geodata/long_name.shp ~/data/short_name\n";
+    exit 0;
+}
+
+# Shape file extention candidates
+my @ext = qw(shp shx dbf prj sbn sbx fbn fbx atx ixs mxs cpg);
+
+# Check parameter correctness and availability
+die "Missing source Shapefile\n" if ! $src;
+die "Missing destination name\n"   if ! $dst;
+
+ # Lower case is the default switch
+$case //= '-l';
+
+# Make path an file management absolute
+$src = File::Spec->rel2abs($src);
+$dst = File::Spec->rel2abs($dst);
+
+# Strip the extention from the input and
+# check source and destination path
+my ($sname, $spath, $suffix) = fileparse($src, '\.[^\.]*');
+$src = File::Spec->catfile($spath,$sname);
+die "Source '$spath' path does not exist!\n" if ! (-d $spath);
+
+if ( ($dst =~ /\.shp$/) or ($dst =~ /\.SHP$/) ) {
+   print "WARNING remove extention from destiantion '$dst'\n";
+   $dst =~ s/\.shp$//;
+   $dst =~ s/\.SHP$//;
+}
+
+my ($dname, $dpath, $duffix) = fileparse($dst, '\.[^\.]*');
+die "Destination path '$dpath' does not exist\n"
+    if not -d $dpath;
+
+print "Move ESRI shape files\n";
+print "    from: $src\n";
+print "      to: $dst\n";
+
+# Check files to move
+my @suffix=();
+for my $ix (0..$#ext) {
+    my $lext  = $ext[$ix];
+    my $uext  = uc($lext);
+    my $lname = $src.'.'.$lext;
+    my $uname = $src.'.'.$uext;
+    my $done  = 0;
+    print "  ..test $sname(".$lext."|".$uext.")";
+    if (-r $lname) {
+        push (@suffix, $lext) if (-e $lname);
+        $done = 1;
+    }
+    if (-r $uname) {
+        push (@suffix, $uext) if (-e $uname);
+        $done = 1;
+    }
+    if  (! $done) {
+        print " N/A\n";
+        die "Cannot read one of the essential shape ".
+            "files with extension $lext|$uext\n" if $ix < 3;
+    } else {
+        print " OK\n" if $done;
+    }
+}
+
+# Proceed move operation
+for my $sext (@suffix) {
+    my $text = $sext;
+    $text = lc($text) if $case eq '-l';
+    $text = uc($text) if $case eq '-u';
+    my $sfile = $src.".".$sext;
+    my $tfile = $dst.".".$text;
+    print "  ..move from: $sfile\n";
+    print "           to: $tfile";
+    move($sfile, $tfile) or die "\nCannot move file $sfile!\n";
+    print " OK\n";
+}
+print ".READY\n";
+
+# --- EOF ----------------------------------------------------
