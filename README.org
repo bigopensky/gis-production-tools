@@ -1,6 +1,6 @@
 * GIS Production Tools
 
-The /GIS Production Tools Repository/ is a collection of small tools
+The "/GIS Production Tools Repository/" is a collection of small tools
 to increase productivity for processing spatial data collections on
 the command line.
 
