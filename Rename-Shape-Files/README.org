@@ -1,12 +1,15 @@
 * Rename ESRI-Shapefiles®
 
+** Description
+
 The tool ~shpmv~ is a Perl script to rename an ensemble of ESRI-Shapefiles®. 
 
 The original set of files for a spatial layer comes often
 with so called sidecar files produced by third party application. The
 tool keeps track of this files during the rename process and renames them too.
 
-The current [[https://en.wikipedia.org/wiki/Shapefile][list of extensions]] in alphabethical order is:
+The current [[https://en.wikipedia.org/wiki/Shapefile][list of extensions]]  in alphabethical
+order is (..cite Wikipedia):
 
 - ~ain~ and ~aih~ -- an attribute index of the active fields in a table
   ~{content-type: x-gis/x-shapefile}~
@@ -45,5 +48,14 @@ The current [[https://en.wikipedia.org/wiki/Shapefile][list of extensions]] in a
   geometry to allow seeking forwards and backwards quickly
   ~{content-type: x-gis/x-shapefile}~
 
-Note: Files marked with ^* are mandatory.
+- *Note*: Files marked with ¹ are mandatory.
+
+** Copyright
+
+Copyright (C) 2016 Alexander Weidauer
+Contact: alex.weidauer@huckfinn.de
+
+This program is free software and released under the
+BSD License 2.0. You can recieve a copy of the license
+under: https://opensource.org/licenses/BSD-3-Clause
 
