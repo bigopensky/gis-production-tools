@@ -2,8 +2,8 @@
 # ------------------------------------------------------------
 # shpmv -- Tool to rename ESRI Shape files
 # ------------------------------------------------------------
-# Copyright (C) 2016 Alexander Weidauer
-# Contact: alex.weidauer@huckfinn.de
+# Copyright: (C) 2016 Alexander Weidauer
+# Contact:   alex.weidauer@huckfinn.de
 #
 # This program is free software and released under the
 # BSD License 2.0. You can recieve a copy of the license
@@ -54,13 +54,13 @@ $src = File::Spec->catfile($spath,$sname);
 die "Source '$spath' path does not exist!\n" if ! (-d $spath);
 
 if ( ($dst =~ /\.shp$/) or ($dst =~ /\.SHP$/) ) {
-   print "WARNING remove extention from destiantion '$dst'\n";
+   print "WARNING remove extention from destiantion '$dst'!\n";
    $dst =~ s/\.shp$//;
    $dst =~ s/\.SHP$//;
 }
 
 my ($dname, $dpath, $duffix) = fileparse($dst, '\.[^\.]*');
-die "Destination path '$dpath' does not exist\n"
+die "Destination path '$dpath' does not exist!\n"
     if not -d $dpath;
 
 print "Move ESRI shape files\n";
@@ -87,7 +87,7 @@ for my $ix (0..$#ext) {
     if  (! $done) {
         print " N/A\n";
         die "Cannot read one of the essential shape ".
-            "files with extension $lext|$uext\n" if $ix < 3;
+            "files with extension '$lext|$uext'!\n" if $ix < 3;
     } else {
         print " OK\n" if $done;
     }
