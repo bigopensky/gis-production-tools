@@ -37,8 +37,8 @@ if ( ($src eq '-h') or ($src eq '--help') ) {
 my @ext = qw(atx ain aih cpg dbf fbn fbx ixs mxs prj qix sbn sbx shp shx);
 
 # Check parameter correctness and availability
-die "Missing source Shapefile\n" if ! $src;
-die "Missing destination name\n"   if ! $dst;
+die "Missing source Shapefile type, -h for help\n" if ! $src;
+die "Missing destination name\n" if ! $dst;
 
  # Lower case is the default switch
 $case //= '-l';
