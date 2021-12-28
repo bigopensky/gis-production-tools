@@ -10,8 +10,8 @@ the command line.
 
 ** Copyright
 
-Copyright (C) 2021 Alexander Weidauer
-Contact: alex.weidauer@huckfinn.de
+- Copyright: (C) 2021 Alexander Weidauer
+- Contact: alex.weidauer@huckfinn.de
 
 This program is free software and released under the
 BSD License 2.0. You can recieve a copy of the license
