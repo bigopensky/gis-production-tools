@@ -93,7 +93,7 @@ for my $ix (0..$#ext) {
     }
 }
 
-# Proceed move operation
+# Proceed rename operation
 for my $sext (@suffix) {
     my $text = $sext;
     $text = lc($text) if $case eq '-l';
