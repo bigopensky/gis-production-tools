@@ -1,9 +1,49 @@
 * Rename ESRI-Shapefiles®
 
-The tool ~shpmv~ is a Rerl script to rename an ensemble of ESRI-Shapefiles(R). 
+The tool ~shpmv~ is a Perl script to rename an ensemble of ESRI-Shapefiles®. 
 
 The original set of files for a spatial layer comes often
 with so called sidecar files produced by third party application. The
 tool keeps track of this files during the rename process and renames them too.
 
+The current [[https://en.wikipedia.org/wiki/Shapefile][list of extensions]] in alphabethical order is:
+
+- ~ain~ and ~aih~ -- an attribute index of the active fields in a table
+  ~{content-type: x-gis/x-shapefile}~
+
+- ~atx~ -- an attribute index for the .dbf file in the form of
+  shapefile.columnname.atx (ArcGIS 8 and later) 
+  ~{content-type: x-gis/x-shapefile}~
+
+- ~cpg~ -- used to specify the code page (only for .dbf) for
+  identifying the character encoding to be used
+  ~{content-type: text/plain OR x-gis/x-shapefile }
+
+- ~dbf~^* -- attribute format; columnar attributes for each shape, in
+   dBase IV format ~{content-type: application/octet-stream OR  text/plain}~
+
+- ~fbn~ and ~fbx~ --  a spatial index of the features that are read-only
+             ~{content-type: x-gis/x-shapefile}~
+
+- ~ixs~ --  a geocoding index for read-write datasets
+             ~{content-type: x-gis/x-shapefile}~
+
+- ~mxs~ -- a geocoding index for read-write datasets (ODB format)
+  ~{content-type: x-gis/x-shapefile}~
+
+- ~prj~ -- projection description, using a well-known text
+  representation of coordinate reference systems ~{content-type:
+  text/plain OR application/text}~
+
+- ~sbn~ and ~sbx~ -- a spatial index of the features
+           ~ {content-type: x-gis/x-shapefile}~
+
+- ~shp~^* -- shape format; the feature geometry itself 
+           ~{content-type: x-gis/x-shapefile}~
+
+- ~shx~^* -- shape index format; a positional index of the feature
+  geometry to allow seeking forwards and backwards quickly
+  ~{content-type: x-gis/x-shapefile}~
+
+Note: Files marked with ^* are mandatory.
 

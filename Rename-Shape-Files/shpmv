@@ -34,7 +34,7 @@ if ( ($src eq '-h') or ($src eq '--help') ) {
 }
 
 # Shape file extention candidates
-my @ext = qw(shp shx dbf prj sbn sbx fbn fbx atx ixs mxs cpg);
+my @ext = qw(atx ain aih cpg dbf fbn fbx ixs mxs prj qix sbn sbx shp shx);
 
 # Check parameter correctness and availability
 die "Missing source Shapefile\n" if ! $src;
