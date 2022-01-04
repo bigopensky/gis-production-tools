@@ -6,6 +6,7 @@ the command line.
 
 ** Contents
 
+- [[./RS-Ortho-Rectify][RS-Ortho-Rectify]]: Sketch to use the ortho-rectification capabilities with OpenCV. 
 - [[Rename-Shape-Files][Rename-Shape-Files]]: Tool to rename an ensemble of ESRI-Shapefiles®.
 
 ** Copyright
